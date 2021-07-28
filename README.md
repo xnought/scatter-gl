@@ -11,7 +11,7 @@ instead of just once.
 
 ### Reasoning
 
-This was done to allow for multiple scatterGL 3D plots to be synced in the same camera position. For example, I could have multiple ScatterGL return its camera position at every point when it is dragged/moved and then set the other to the same point. The result is I can move on position and all other will also be the same position.
+This was used to sync up multiple camera positions from moving just one ScatterGL plot.
 
 ## Examples
 
@@ -22,23 +22,6 @@ This was done to allow for multiple scatterGL 3D plots to be synced in the same 
 const dataset = new ScatterGL.Dataset(points);
 const scatterGL = new ScatterGL(containerElement);
 scatterGL.render(dataset);
-```
-
-## Installation
-
-##### with yarn / npm
-
-```bash
-yarn add scatter-gl
-```
-
-##### via cdn
-
-```html
-<!-- Load three.js -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.106.2/build/three.min.js"></script>
-<!-- Load scatter-gl.js -->
-<script src="https://cdn.jsdelivr.net/npm/scatter-gl@0.0.1/lib/scatter-gl.min.js"></script>
 ```
 
 #### Parameters
