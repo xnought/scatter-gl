@@ -208,7 +208,7 @@ export class ScatterPlot {
 
     // Change is called everytime the user interacts with the controls.
     cameraControls.addEventListener('change', () => {
-      this.onCameraMoveListeners.forEach(l =>
+      this.onCameraDragListeners.forEach(l =>
         l(this.camera.position, cameraControls.target)
       );
       this.render();

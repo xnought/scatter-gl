@@ -1,13 +1,13 @@
 {
-  "name": "scatter-gl",
-  "version": "0.0.10",
-  "description": "webgl accelerated 3D/2D scatterplot renderer",
+  "name": "camerahelperscattergl",
+  "version": "0.0.01",
+  "description": "scatergl with 2 extra methods for camera syncing across multiple",
   "author": {
     "name": "Andy Coenen",
     "email": "andycoenen@google.com"
   },
   "license": "Apache-2.0",
-  "repository": "PAIR-code/scatter-gl",
+  "repository": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "unpkg": "lib/scatter-gl.min.js",
@@ -46,8 +46,5 @@
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "es5"
-  },
-  "publishConfig": {
-    "registry": "https://wombat-dressing-room.appspot.com"
   }
 }

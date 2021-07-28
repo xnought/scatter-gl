@@ -1,8 +1,9 @@
-# ScatterGL + onCameraDrag + setCameraPositionAndTarget
+# ALL CREDIT TOWARDS **Andy Coenen** FOR CREATING SCATTERGL
 
-Interactive 3D / 2D webgl-accelerated scatter plot point renderer. Core functionality from the [embedding projector](http://projector.tensorflow.org), capable of rendering and interacting with tens of thousands of points.
+Since this is a fork with minor modifications, if the creators would like
+for this to be taken down from npm, please make an issue on the [repo](https://github.com/xnought/scatter-gl). This is also where you can see the modifications. I only had this published to npm for ease of installation when I use this modified package for projects. I did not write all of this code, I just added the a few methods and modified callbacks to call more often.
 
-## Side Note From Forked
+## THIS IS FORKED FROM [ScatterGL from Google PAIR](https://github.com/PAIR-code/scatter-gl)
 
 I forked this in order to modify the ScatterGL class to include 2 more methods.
 One is a callback that is given on creation of ScatterGL called `onCameraDrag` (similar to `onCameraMove`, but called every single position
