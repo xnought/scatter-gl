@@ -22,7 +22,7 @@ import {
   OrbitControlParams,
 } from './scatter_plot';
 import {parseColor} from './color';
-import {Dataset, Sequence} from './data';
+import {Dataset, Point3D, Sequence} from './data';
 import {LabelRenderParams} from './render';
 import {Styles, UserStyles, makeStyles} from './styles';
 import {InteractionMode, Optional, RenderMode} from './types';
@@ -47,6 +47,7 @@ export interface ScatterGLParams {
   onClick?: (points: number | null) => void;
   onSelect?: (points: number[]) => void;
   onCameraMove?: OnCameraMoveListener;
+  onCameraDrag?: OnCameraMoveListener;
   pointColorer?: PointColorer;
   renderMode?: RenderMode;
   rotateOnStart?: boolean;
@@ -86,6 +87,7 @@ export class ScatterGL {
   private hoverCallback: (point: number | null) => void = () => {};
   private selectCallback: (points: number[]) => void = () => {};
   private cameraMoveCallback: OnCameraMoveListener = () => {};
+  private cameraDragCallback: OnCameraMoveListener = () => {};
 
   constructor(containerElement: HTMLElement, params: ScatterGLParams = {}) {
     this.containerElement = containerElement;
@@ -105,8 +107,8 @@ export class ScatterGL {
     });
 
     this.scatterPlot.onCameraMove(this.cameraMoveCallback);
+    this.scatterPlot.onCameraDrag(this.cameraDragCallback);
   }
-
   private setParameters(p: ScatterGLParams) {
     if (p.onClick !== undefined) this.clickCallback = p.onClick;
     if (p.onHover !== undefined) this.hoverCallback = p.onHover;
@@ -119,7 +121,9 @@ export class ScatterGL {
     if (p.showLabelsOnHover !== undefined)
       this.showLabelsOnHover = p.showLabelsOnHover;
   }
-
+  setCameraPositionAndTarget(position: Point3D, target: Point3D) {
+    this.scatterPlot.setCameraPositionAndTarget(position, target);
+  }
   render(dataset: Dataset) {
     this.updateDataset(dataset);
     this.setVisualizers();

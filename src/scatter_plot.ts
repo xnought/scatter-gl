@@ -109,6 +109,7 @@ export class ScatterPlot {
   private visualizers = new Map<string, ScatterPlotVisualizer>();
 
   private onCameraMoveListeners: OnCameraMoveListener[] = [];
+  private onCameraDragListeners: OnCameraMoveListener[] = [];
 
   private height = 0;
   private width = 0;
@@ -207,6 +208,9 @@ export class ScatterPlot {
 
     // Change is called everytime the user interacts with the controls.
     cameraControls.addEventListener('change', () => {
+      this.onCameraMoveListeners.forEach(l =>
+        l(this.camera.position, cameraControls.target)
+      );
       this.render();
     });
 
@@ -893,6 +897,9 @@ export class ScatterPlot {
 
   onCameraMove(listener: OnCameraMoveListener) {
     this.onCameraMoveListeners.push(listener);
+  }
+  onCameraDrag(listener: OnCameraMoveListener) {
+    this.onCameraDragListeners.push(listener);
   }
 
   clickOnPoint(pointIndex: number) {
